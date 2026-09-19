@@ -1,0 +1,215 @@
+:root {
+  --bg-color: #f5f7fa;
+  --card-bg: #ffffff;
+  --text-color: #222;
+  --button-bg: #4facfe;
+}
+
+/*  Blue Theme */
+[data-theme="blue"] {
+  --bg-color: #0f2027;
+  --card-bg: #203a43;
+  --text-color: #e0f7ff;
+  --button-bg: #2bc0e4;
+}
+
+/*  Sunny Theme */
+[data-theme="sunny"] {
+  --bg-color: #fff3cd;
+  --card-bg: #ffe69c;
+  --text-color: #5a4200;
+  --button-bg: #ff9800;
+}
+
+/* ---------- BODY ---------- */
+body {
+  background: url('https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&w=1470&q=80') no-repeat center center fixed;
+  background-size: cover;
+  color: var(--text-color);
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+
+.app-container {
+  background-color: rgba(255, 255, 255, 0.85); 
+  padding: 20px;
+  border-radius: 15px;
+  max-width: 1200px;
+  margin: 20px auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+[data-theme="blue"] .app-container {
+  background-color: rgba(32, 58, 67, 0.85);
+}
+
+[data-theme="sunny"] .app-container {
+  background-color: rgba(255, 230, 156, 0.85);
+}
+
+h1 {
+  color: #1e90ff;
+}
+
+.input-container {
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+input {
+  padding: 10px 35px 10px 10px; 
+  width: 200px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background: url('https://cdn-icons-png.flaticon.com/512/54/54481.png') no-repeat 170px center;
+  background-size: 20px 20px;
+}
+
+button {
+  padding: 10px 20px;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  background: var(--button-bg);
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+button:hover {
+  background-color: #007acc;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+}
+
+.weather-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* ---------- Weather Card ---------- */
+.weather-card {
+  background: var(--card-bg);
+  border-radius: 10px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1000px;
+  box-shadow: 2px 2px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.weather-card:hover {
+  transform: translateY(-5px);
+}
+
+/* ---------- Card Sections ---------- */
+.weather-card-sections {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap; 
+}
+
+.city-info,
+.hourly-chart,
+.five-day-forecast {
+  flex: 1 1 300px; 
+  min-width: 250px;
+}
+
+/* ---------- Forecast Items ---------- */
+.forecast {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.forecast-item {
+  text-align: center;
+  background:  rgba(0, 0, 0, 0.05);
+  padding:10px  8px;
+  border-radius: 10px;
+  flex: 1 1 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 6px rgba(0,0,0,0.15);
+}
+
+.forecast-item img {
+  width: 40px;  
+  height: 40px;
+  filter: drop-shadow(1px 1px 2px rgba(0,0,0,0.4)); 
+}
+/* ---------- Spinner ---------- */
+.spinner {
+  margin: 20px auto;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #cce7ff;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ---------- Weather Icon Animation ---------- */
+.weather-icon {
+  width: 80px;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ---------- Misc ---------- */
+.updated-time {
+  font-size: 12px;
+  color: #666;
+}
+
+@media (max-width: 1024px) {
+  .weather-card-sections {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .weather-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .weather-card {
+    width: 90%;
+  }
+
+  input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+}
